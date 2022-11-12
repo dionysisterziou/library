@@ -18,6 +18,22 @@ function addBookToLibrary(event) {
     const book = new Book(title, author, pages);
 
     myLibrary.push(book);
+    displayBook();
+}
+
+function displayBook() {
+    const library = document.querySelector('#library')
+
+    for (const book of myLibrary) {
+        const div = document.createElement('div');
+
+        for (const [key, value] of Object.entries(book)) {
+            div.innerHTML += `<p>${value}</p>`;
+        }
+
+        library.appendChild(div);
+        // console.log(book)
+    }
 }
 
 buttonAdd.addEventListener('click', addBookToLibrary);
