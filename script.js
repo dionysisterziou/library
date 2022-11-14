@@ -22,7 +22,7 @@ function addBookToLibrary(event) {
 }
 
 function displayBook() {
-    const library = document.querySelector('#library')
+    const library = document.querySelector('#library');
 
     for (const book of myLibrary) {
         const div = document.createElement('div');
@@ -32,8 +32,9 @@ function displayBook() {
         }
 
         library.appendChild(div);
-        // console.log(book)
     }
+
+    myLibrary.length = [];
 }
 
 buttonAdd.addEventListener('click', addBookToLibrary);
