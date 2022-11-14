@@ -13,15 +13,13 @@
     <h1>Alexandria's Library</h1>
 
     <form id="bookForm">
-        <input type="text" name="title">
-        <input type="text" name="author">
-        <input type="text" name="pages">
+        <input type="text" name="title" required>
+        <input type="text" name="author" required>
+        <input type="number" name="pages" required>
         <button type="submit" id="buttonAdd">+ Add Book</button>
     </form>
 
-    <div id="library" class="library">
-
-    </div>
+    <div id="library"></div>
 
     <script src="./script.js"></script>
 </body>

@@ -1,4 +1,4 @@
-const buttonAdd = document.querySelector('#buttonAdd');
+const bookForm = document.querySelector('#bookForm');
 
 let myLibrary = [];
 
@@ -37,4 +37,4 @@ function displayBook() {
     myLibrary.length = [];
 }
 
-buttonAdd.addEventListener('click', addBookToLibrary);
+bookForm.addEventListener('submit', addBookToLibrary);
