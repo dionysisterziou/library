@@ -3,7 +3,10 @@
         "browser": true,
         "es2021": true
     },
-    "extends": "standard",
+    "extends": [
+        "standard",
+        "prettier"
+    ],
     "overrides": [
     ],
     "parserOptions": {
