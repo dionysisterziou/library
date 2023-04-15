@@ -1,6 +1,6 @@
 const bookForm = document.querySelector('#bookForm');
 
-let myLibrary = [];
+const myLibrary = [];
 
 function Book(title, author, pages) {
     this.title = title
