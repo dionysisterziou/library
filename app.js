@@ -24,15 +24,18 @@ function addBookToLibrary (event) {
 function displayBook () {
   const library = document.querySelector('#library')
 
-  for (const book of myLibrary) {
+  myLibrary.forEach((book) => {
     const div = document.createElement('div')
 
-    for (const [key, value] of Object.entries(book)) {
-      div.innerHTML += `<p>${value}</p>`
-    }
+    for (const value of Object.values(book)) {
+      const p = document.createElement('p')
 
+      p.textContent = `${value}`;
+      div.appendChild(p);
+    }
+    
     library.appendChild(div)
-  }
+  })
 
   myLibrary.length = []
 }
