@@ -1,3 +1,4 @@
+const buttonAdd = document.querySelector('#buttonAdd')
 const bookForm = document.querySelector('#bookForm')
 
 const myLibrary = []
@@ -6,6 +7,14 @@ function Book (title, author, pages) {
   this.title = title
   this.author = author
   this.pages = pages
+}
+
+function showForm(event) {
+  if (bookForm.style.display === 'none') {
+    bookForm.style.display = 'block'
+  } else {
+    bookForm.style.display = 'none'
+  }
 }
 
 function addBookToLibrary (event) {
@@ -30,8 +39,8 @@ function displayBook () {
     for (const value of Object.values(book)) {
       const p = document.createElement('p')
 
-      p.textContent = `${value}`;
-      div.appendChild(p);
+      p.textContent = `${value}`
+      div.appendChild(p)
     }
     
     library.appendChild(div)
@@ -40,4 +49,5 @@ function displayBook () {
   myLibrary.length = []
 }
 
+buttonAdd.addEventListener('click', showForm)
 bookForm.addEventListener('submit', addBookToLibrary)
