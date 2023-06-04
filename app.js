@@ -10,14 +10,10 @@ function Book (title, author, pages) {
 }
 
 function showForm(event) {
-  if (bookForm.style.display === 'none') {
-    bookForm.style.display = 'block'
-  } else {
-    bookForm.style.display = 'none'
-  }
+  bookForm.style.display = bookForm.style.display === 'none' ? 'block' : 'none'
 }
 
-function addBookToLibrary (event) {
+function addBookToLibrary(event) {
   event.preventDefault()
 
   const title = document.querySelector('input[name="title"]').value
