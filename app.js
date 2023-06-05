@@ -26,14 +26,25 @@ function addBookToLibrary(event) {
   displayBook();
 }
 
+function removeBook(event) { 
+  const button = event.target;
+  const bookIndex = parseInt(button.getAttribute('data-index'));
+
+  myLibrary.splice(bookIndex, 1);
+  displayBook();
+}
+
 function displayBook() {
   const library = document.querySelector('#library');
+  library.innerHTML = ''; // Clear existing content before re-rendering
 
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
     const div = document.createElement('div');
-    const button = document.createElement('button');
+    const buttonDelete = document.createElement('button');
 
-    button.textContent = 'Remove';
+    buttonDelete.textContent = 'Remove';
+    buttonDelete.setAttribute('data-index', index);
+    buttonDelete.addEventListener('click', removeBook);
 
     for (const value of Object.values(book)) {
       const p = document.createElement('p');
@@ -42,11 +53,9 @@ function displayBook() {
       div.appendChild(p);
     }
 
-    div.appendChild(button);
+    div.appendChild(buttonDelete);
     library.appendChild(div);
   });
-
-  myLibrary.length = [];
 }
 
 buttonAdd.addEventListener('click', showForm);
