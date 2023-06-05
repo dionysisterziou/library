@@ -10,7 +10,7 @@ function Book(title, author, pages) {
 }
 
 function showForm(event) {
-  bookForm.style.display = bookForm.style.display === "none" ? "block" : "none";
+  bookForm.style.display = bookForm.style.display === 'none' ? 'block' : 'none';
 }
 
 function addBookToLibrary(event) {
@@ -27,23 +27,27 @@ function addBookToLibrary(event) {
 }
 
 function displayBook() {
-  const library = document.querySelector("#library");
+  const library = document.querySelector('#library');
 
   myLibrary.forEach((book) => {
-    const div = document.createElement("div");
+    const div = document.createElement('div');
+    const button = document.createElement('button');
+
+    button.textContent = 'Remove';
 
     for (const value of Object.values(book)) {
-      const p = document.createElement("p");
+      const p = document.createElement('p');
 
       p.textContent = `${value}`;
       div.appendChild(p);
     }
 
+    div.appendChild(button);
     library.appendChild(div);
   });
 
   myLibrary.length = [];
 }
 
-buttonAdd.addEventListener("click", showForm);
-bookForm.addEventListener("submit", addBookToLibrary);
+buttonAdd.addEventListener('click', showForm);
+bookForm.addEventListener('submit', addBookToLibrary);
