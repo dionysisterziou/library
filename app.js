@@ -1,49 +1,49 @@
-const buttonAdd = document.querySelector('#buttonAdd')
-const bookForm = document.querySelector('#bookForm')
+const buttonAdd = document.querySelector("#buttonAdd");
+const bookForm = document.querySelector("#bookForm");
 
-const myLibrary = []
+const myLibrary = [];
 
-function Book (title, author, pages) {
-  this.title = title
-  this.author = author
-  this.pages = pages
+function Book(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
 }
 
 function showForm(event) {
-  bookForm.style.display = bookForm.style.display === 'none' ? 'block' : 'none'
+  bookForm.style.display = bookForm.style.display === "none" ? "block" : "none";
 }
 
 function addBookToLibrary(event) {
-  event.preventDefault()
+  event.preventDefault();
 
-  const title = document.querySelector('input[name="title"]').value
-  const author = document.querySelector('input[name="author"]').value
-  const pages = document.querySelector('input[name="pages"]').value
+  const title = document.querySelector('input[name="title"]').value;
+  const author = document.querySelector('input[name="author"]').value;
+  const pages = document.querySelector('input[name="pages"]').value;
 
-  const book = new Book(title, author, pages)
+  const book = new Book(title, author, pages);
 
-  myLibrary.push(book)
-  displayBook()
+  myLibrary.push(book);
+  displayBook();
 }
 
-function displayBook () {
-  const library = document.querySelector('#library')
+function displayBook() {
+  const library = document.querySelector("#library");
 
   myLibrary.forEach((book) => {
-    const div = document.createElement('div')
+    const div = document.createElement("div");
 
     for (const value of Object.values(book)) {
-      const p = document.createElement('p')
+      const p = document.createElement("p");
 
-      p.textContent = `${value}`
-      div.appendChild(p)
+      p.textContent = `${value}`;
+      div.appendChild(p);
     }
-    
-    library.appendChild(div)
-  })
 
-  myLibrary.length = []
+    library.appendChild(div);
+  });
+
+  myLibrary.length = [];
 }
 
-buttonAdd.addEventListener('click', showForm)
-bookForm.addEventListener('submit', addBookToLibrary)
+buttonAdd.addEventListener("click", showForm);
+bookForm.addEventListener("submit", addBookToLibrary);
