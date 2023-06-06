@@ -34,6 +34,16 @@ function removeBook(event) {
   displayBook();
 }
 
+function changeStatus(event) {
+  const button = event.target;
+
+  if (button.textContent === 'Read') {
+    button.textContent = 'Not read';
+  } else {
+    button.textContent = 'Read';
+  }
+}
+
 function displayBook() {
   const library = document.querySelector('#library');
   library.innerHTML = ''; // Clear existing content before re-rendering
@@ -47,6 +57,7 @@ function displayBook() {
     buttonRead.textContent = 'Read';
     buttonDelete.setAttribute('data-index', index);
     buttonDelete.addEventListener('click', removeBook);
+    buttonRead.addEventListener('click', changeStatus);
 
     for (const value of Object.values(book)) {
       const p = document.createElement('p');
