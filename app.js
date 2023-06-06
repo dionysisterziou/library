@@ -41,8 +41,10 @@ function displayBook() {
   myLibrary.forEach((book, index) => {
     const div = document.createElement('div');
     const buttonDelete = document.createElement('button');
+    const buttonRead = document.createElement('button');
 
     buttonDelete.textContent = 'Remove';
+    buttonRead.textContent = 'Read';
     buttonDelete.setAttribute('data-index', index);
     buttonDelete.addEventListener('click', removeBook);
 
@@ -54,6 +56,7 @@ function displayBook() {
     }
 
     div.appendChild(buttonDelete);
+    div.appendChild(buttonRead);
     library.appendChild(div);
   });
 }
