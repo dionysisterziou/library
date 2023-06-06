@@ -37,11 +37,7 @@ function removeBook(event) {
 function changeStatus(event) {
   const button = event.target;
 
-  if (button.textContent === 'Read') {
-    button.textContent = 'Not read';
-  } else {
-    button.textContent = 'Read';
-  }
+  button.textContent = button.textContent === 'Read' ? 'Not read' : 'Read';
 }
 
 function displayBook() {
