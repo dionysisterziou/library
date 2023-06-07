@@ -20,7 +20,7 @@ function addBookToLibrary(event) {
   const title = document.querySelector('input[name="title"]').value;
   const author = document.querySelector('input[name="author"]').value;
   const pages = document.querySelector('input[name="pages"]').value;
-  const read = false;
+  const read = true;
 
   const book = new Book(title, author, pages, read);
 
@@ -38,7 +38,10 @@ function removeBook(event) {
 
 function changeStatus(event) {
   const button = event.target;
+  const bookIndex = parseInt(button.getAttribute("data-index"));
 
+  myLibrary[bookIndex].read = !myLibrary[bookIndex].read;
+  
   button.textContent = button.textContent === "Read" ? "Not read" : "Read";
 }
 
