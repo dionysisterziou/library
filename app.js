@@ -3,13 +3,14 @@ const bookForm = document.querySelector("#bookForm");
 
 const myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.read = read;
 }
 
-function showForm(event) {
+function showForm() {
   bookForm.style.display = bookForm.style.display === 'none' ? 'block' : 'none';
 }
 
@@ -19,8 +20,9 @@ function addBookToLibrary(event) {
   const title = document.querySelector('input[name="title"]').value;
   const author = document.querySelector('input[name="author"]').value;
   const pages = document.querySelector('input[name="pages"]').value;
+  const read = false;
 
-  const book = new Book(title, author, pages);
+  const book = new Book(title, author, pages, read);
 
   myLibrary.push(book);
   displayBook();
