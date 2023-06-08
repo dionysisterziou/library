@@ -26,6 +26,8 @@ function addBookToLibrary(event) {
 
   myLibrary.push(book);
   displayBook();
+
+  bookForm.style.display = "none"; // Hide the form after submitting
 }
 
 function removeBook(event) {
