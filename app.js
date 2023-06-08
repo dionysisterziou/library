@@ -11,7 +11,7 @@ function Book(title, author, pages, read) {
 }
 
 function showForm() {
-  bookForm.style.display = bookForm.style.display === "none" ? "block" : "none";
+  bookForm.style.display = bookForm.style.display === "none" ? "flex" : "none";
 }
 
 function addBookToLibrary(event) {
