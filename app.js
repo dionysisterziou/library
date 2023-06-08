@@ -39,10 +39,13 @@ function removeBook(event) {
 function changeStatus(event) {
   const button = event.target;
   const bookIndex = parseInt(button.getAttribute("data-index"));
+  const book = myLibrary[bookIndex];
 
-  myLibrary[bookIndex].read = !myLibrary[bookIndex].read;
+  book.read = !book.read; // Toggle read property
   
   button.textContent = button.textContent === "Read" ? "Not read" : "Read";
+
+  console.log(book.title, book.author, book.pages, book.read);
 }
 
 function displayBook() {
@@ -57,6 +60,7 @@ function displayBook() {
     buttonDelete.textContent = "Remove";
     buttonRead.textContent = "Read";
     buttonDelete.setAttribute("data-index", index);
+    buttonRead.setAttribute("data-index", index)
     buttonDelete.addEventListener("click", removeBook);
     buttonRead.addEventListener("click", changeStatus);
 
