@@ -11,7 +11,7 @@ function Book(title, author, pages, read) {
 }
 
 function showForm() {
-  bookForm.style.display = bookForm.style.display === "none" ? "flex" : "none";
+  bookForm.style.display = "flex";
 }
 
 function addBookToLibrary(event) {
@@ -45,7 +45,7 @@ function changeStatus(event) {
   const book = myLibrary[bookIndex];
 
   book.read = !book.read; // Toggle read property
-  
+
   button.textContent = button.textContent === "Read" ? "Not read" : "Read";
 }
 
@@ -61,7 +61,7 @@ function displayBook() {
     buttonDelete.textContent = "Remove";
     buttonRead.textContent = "Not read";
     buttonDelete.setAttribute("data-index", index);
-    buttonRead.setAttribute("data-index", index)
+    buttonRead.setAttribute("data-index", index);
     buttonDelete.addEventListener("click", removeBook);
     buttonRead.addEventListener("click", changeStatus);
 

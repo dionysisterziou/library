@@ -18,14 +18,18 @@ hr {
   width: 100%;
 }
 
-.flex-container {
-  /* display: flex; comes from JavaScript */
+#bookForm {
+  display: none;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
