@@ -18,6 +18,20 @@ hr {
   width: 100%;
 }
 
+.add-book-button{
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #bookForm {
   display: none;
   flex-direction: column;
@@ -28,8 +42,3 @@ hr {
   bottom: 0;
 }
 
-.flex-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
