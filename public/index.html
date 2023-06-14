@@ -19,13 +19,20 @@
     </div>
 
     <form id="bookForm" style="display: none;" class="flex-container">
-        <label for="title"></label>
-        <input type="text" name="title" placeholder="Title" name="title" id="title" required>
-        <label for="author"></label>
-        <input type="text" name="author" placeholder="Author" name="author" id="author" required>
-        <label for="pages"></label>
-        <input type="number" name="pages" placeholder="Pages" name="pages" id="pages" required>
-        <input type="submit">
+        <fieldset>
+            <legend>Add new book</legend>
+
+            <label for="title"></label>
+            <input type="text" name="title" placeholder="Title" name="title" id="title" required>
+
+            <label for="author"></label>
+            <input type="text" name="author" placeholder="Author" name="author" id="author" required>
+
+            <label for="pages"></label>
+            <input type="number" name="pages" placeholder="Pages" name="pages" id="pages" required>
+            
+            <input type="submit">
+        </fieldset>
     </form>
 
     <div id="library"></div>
