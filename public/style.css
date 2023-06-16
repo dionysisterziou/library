@@ -24,6 +24,14 @@ hr {
   font-size: 1.5rem;
   cursor: pointer;
   margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.add-book-button:hover {
+  background-color: #ddd;
 }
 
 .flex-container {
@@ -40,5 +48,9 @@ hr {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+#bookForm fieldset {
+  display: contents;
 }
 
