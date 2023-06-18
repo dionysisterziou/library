@@ -41,6 +41,9 @@ hr {
   flex-direction: column;
 }
 
+.hidden {
+  display: none;
+}
 
 
 /* position: absolute;

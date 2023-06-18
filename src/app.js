@@ -1,5 +1,5 @@
-const buttonAdd = document.querySelector("#buttonAdd");
-const bookForm = document.querySelector("#bookForm");
+const buttonAdd = document.querySelector('#buttonAdd');
+const bookForm = document.querySelector('#bookForm');
 
 const myLibrary = [];
 
@@ -11,7 +11,7 @@ function Book(title, author, pages, read) {
 }
 
 function showForm() {
-  bookForm.style.display = "flex";
+  bookForm.classList.toggle('hidden');
 }
 
 function addBookToLibrary(event) {
@@ -28,12 +28,12 @@ function addBookToLibrary(event) {
   displayBook();
 
   bookForm.reset(); // Reset the form fields
-  bookForm.style.display = "none"; // Hide the form after submitting
+  bookForm.style.display = 'none'; // Hide the form after submitting
 }
 
 function removeBook(event) {
   const button = event.target;
-  const bookIndex = parseInt(button.getAttribute("data-index"));
+  const bookIndex = parseInt(button.getAttribute('data-index'));
 
   myLibrary.splice(bookIndex, 1);
   displayBook();
@@ -41,33 +41,33 @@ function removeBook(event) {
 
 function changeStatus(event) {
   const button = event.target;
-  const bookIndex = parseInt(button.getAttribute("data-index"));
+  const bookIndex = parseInt(button.getAttribute('data-index'));
   const book = myLibrary[bookIndex];
 
   book.read = !book.read; // Toggle read property
 
-  button.textContent = button.textContent === "Read" ? "Not read" : "Read";
+  button.textContent = button.textContent === 'Read' ? 'Not read' : 'Read';
 }
 
 function displayBook() {
-  const library = document.querySelector("#library");
-  library.innerHTML = ""; // Clear existing content before re-rendering
+  const library = document.querySelector('#library');
+  library.innerHTML = ''; // Clear existing content before re-rendering
 
   myLibrary.forEach((book, index) => {
-    const div = document.createElement("div");
-    const buttonDelete = document.createElement("button");
-    const buttonRead = document.createElement("button");
+    const div = document.createElement('div');
+    const buttonDelete = document.createElement('button');
+    const buttonRead = document.createElement('button');
 
-    buttonDelete.textContent = "Remove";
-    buttonRead.textContent = "Not read";
-    buttonDelete.setAttribute("data-index", index);
-    buttonRead.setAttribute("data-index", index);
-    buttonDelete.addEventListener("click", removeBook);
-    buttonRead.addEventListener("click", changeStatus);
+    buttonDelete.textContent = 'Remove';
+    buttonRead.textContent = 'Not read';
+    buttonDelete.setAttribute('data-index', index);
+    buttonRead.setAttribute('data-index', index);
+    buttonDelete.addEventListener('click', removeBook);
+    buttonRead.addEventListener('click', changeStatus);
 
     for (const [key, value] of Object.entries(book)) {
-      if (key !== "read") {
-        const p = document.createElement("p");
+      if (key !== 'read') {
+        const p = document.createElement('p');
 
         p.textContent = `${value}`;
         div.appendChild(p);
@@ -80,5 +80,5 @@ function displayBook() {
   });
 }
 
-buttonAdd.addEventListener("click", showForm);
-bookForm.addEventListener("submit", addBookToLibrary);
+buttonAdd.addEventListener('click', showForm);
+bookForm.addEventListener('submit', addBookToLibrary);
