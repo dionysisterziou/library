@@ -38,14 +38,13 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-#bookForm {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid #000;
-}
+
+
+/* position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border: 1px solid #000; */
