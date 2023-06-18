@@ -45,6 +45,10 @@ hr {
   display: none;
 }
 
+fieldset {
+  display: contents;
+}
+
 
 /* position: absolute;
 top: 50%;
