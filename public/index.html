@@ -11,31 +11,33 @@
 </head>
 
 <body>
-    <h1>Alexandria's Library</h1>
-    <hr>
+    <div class="container">
+        <h1>Alexandria's Library</h1>
+        <hr>
 
-    <div class="flex-container">
-        <button id="buttonAdd" class="add-book-button">+ Add book</button>
+        <div class="flex-container">
+            <button id="buttonAdd" class="add-book-button">+ Add book</button>
+        </div>
+
+        <form id="bookForm" class="flex-container hidden">
+            <fieldset>
+                <legend>Add new book</legend>
+
+                <label for="title"></label>
+                <input type="text" name="title" placeholder="Title" name="title" id="title" required>
+
+                <label for="author"></label>
+                <input type="text" name="author" placeholder="Author" name="author" id="author" required>
+
+                <label for="pages"></label>
+                <input type="number" name="pages" placeholder="Pages" name="pages" id="pages" required>
+
+                <input type="submit">
+            </fieldset>
+        </form>
+
+        <div id="library"></div>
     </div>
-
-    <form id="bookForm" class="flex-container hidden">
-        <fieldset>
-            <legend>Add new book</legend>
-
-            <label for="title"></label>
-            <input type="text" name="title" placeholder="Title" name="title" id="title" required>
-
-            <label for="author"></label>
-            <input type="text" name="author" placeholder="Author" name="author" id="author" required>
-
-            <label for="pages"></label>
-            <input type="number" name="pages" placeholder="Pages" name="pages" id="pages" required>
-
-            <input type="submit">
-        </fieldset>
-    </form>
-
-    <div id="library"></div>
 
     <script src="../src/app.js"></script>
 </body>

@@ -6,12 +6,25 @@ html {
   font-size: 16px;
 }
 
-body {
+/* body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 2rem;
+  position: relative;
 }
 
 hr {
-  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+} */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 2rem;
+}
+
+hr {
+  margin: 0 calc(-50vw + 50%);
 }
 
 form {
@@ -20,6 +33,10 @@ form {
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #000;
+}
+
+fieldset {
+  display: contents;
 }
 
 .add-book-button{
@@ -47,8 +64,4 @@ form {
 
 .hidden {
   display: none;
-}
-
-fieldset {
-  display: contents;
 }
