@@ -1,5 +1,6 @@
 const buttonAdd = document.querySelector('#buttonAdd');
 const bookForm = document.querySelector('#bookForm');
+const darkOverlay = document.querySelector('#darkOverlay');
 
 const myLibrary = [];
 
@@ -24,11 +25,17 @@ function addBookToLibrary(event) {
   displayBook();
 
   bookForm.reset(); // Reset the form fields
-  toggleForm();
+  hideForm();
 }
 
-function toggleForm() {
-  bookForm.classList.toggle('hidden');
+function showForm() {
+  bookForm.classList.remove('hidden');
+  darkOverlay.style.display = 'block';
+}
+
+function hideForm() {
+  bookForm.classList.add('hidden');
+  darkOverlay.style.display = 'none';
 }
 
 function removeBook(event) {
@@ -80,5 +87,6 @@ function displayBook() {
   });
 }
 
-buttonAdd.addEventListener('click', toggleForm);
+buttonAdd.addEventListener('click', showForm);
+darkOverlay.addEventListener('click', hideForm)
 bookForm.addEventListener('submit', addBookToLibrary);
