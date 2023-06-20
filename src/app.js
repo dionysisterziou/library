@@ -10,10 +10,6 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function showForm() {
-  bookForm.classList.toggle('hidden');
-}
-
 function addBookToLibrary(event) {
   event.preventDefault();
 
@@ -28,7 +24,11 @@ function addBookToLibrary(event) {
   displayBook();
 
   bookForm.reset(); // Reset the form fields
-  bookForm.style.display = 'none'; // Hide the form after submitting
+  toggleForm();
+}
+
+function toggleForm() {
+  bookForm.classList.toggle('hidden');
 }
 
 function removeBook(event) {
@@ -80,5 +80,5 @@ function displayBook() {
   });
 }
 
-buttonAdd.addEventListener('click', showForm);
+buttonAdd.addEventListener('click', toggleForm);
 bookForm.addEventListener('submit', addBookToLibrary);
