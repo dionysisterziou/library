@@ -30,12 +30,12 @@ function addBookToLibrary(event) {
 
 function showForm() {
   bookForm.classList.remove('hidden');
-  darkOverlay.style.display = 'block';
+  darkOverlay.classList.remove('hidden');
 }
 
 function hideForm() {
   bookForm.classList.add('hidden');
-  darkOverlay.style.display = 'none';
+  darkOverlay.classList.add('hidden');
 }
 
 function removeBook(event) {
