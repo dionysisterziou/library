@@ -21,7 +21,13 @@ form {
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #000;
+  border-radius: 5px;
   background-color: white;
+  width: 14rem;
+}
+
+input {
+  height: 2rem;
 }
 
 fieldset {
