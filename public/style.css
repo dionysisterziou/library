@@ -29,7 +29,6 @@ form {
 }
 
 input {
-  height: 2rem;
   width: 100%;
 }
 
@@ -55,7 +54,7 @@ fieldset {
 
 .flex-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
@@ -71,4 +70,9 @@ fieldset {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.visually-hidden {
+  position: absolute;
+  clip-path: inset(100%);
 }
