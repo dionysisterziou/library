@@ -30,10 +30,28 @@ form {
 
 input {
   width: 100%;
+  height: 2.5rem;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+
+input:focus {
+  outline: none;
+
+}
+
+input[type="submit"] {
+  cursor: pointer;
 }
 
 fieldset {
   display: contents;
+}
+
+legend {
+  font-weight: 900;
+  font-size: 1.3rem;
 }
 
 .add-book-button{
@@ -54,7 +72,7 @@ fieldset {
 
 .flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
 }
