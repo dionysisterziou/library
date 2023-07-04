@@ -65,6 +65,7 @@ function displayBook() {
     const buttonDelete = document.createElement('button');
     const buttonRead = document.createElement('button');
 
+    div.classList.toggle('grid-item');
     buttonDelete.textContent = 'Remove';
     buttonRead.textContent = 'Not read';
     buttonDelete.setAttribute('data-index', index);
