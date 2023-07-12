@@ -66,6 +66,8 @@ function displayBook() {
     const buttonRead = document.createElement('button');
 
     div.classList.toggle('grid-item');
+    buttonRead.classList.toggle('button-action');
+    buttonDelete.classList.toggle('button-action');
     buttonDelete.textContent = 'Remove';
     buttonRead.textContent = 'Not read';
     buttonDelete.setAttribute('data-index', index);
@@ -77,13 +79,20 @@ function displayBook() {
       if (key !== 'read') {
         const p = document.createElement('p');
 
-        p.textContent = `${value}`;
+        if (key === 'title') {
+          p.textContent = `"${value}"`;
+        } else if (key === 'pages') {
+          p.textContent = `${value} pages`;
+        } else {
+          p.textContent = `${value}`;
+        }
+
         div.appendChild(p);
       }
     }
 
-    div.appendChild(buttonDelete);
     div.appendChild(buttonRead);
+    div.appendChild(buttonDelete);
     library.appendChild(div);
   });
 }
