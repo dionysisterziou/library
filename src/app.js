@@ -56,6 +56,15 @@ function changeStatus(event) {
   button.textContent = button.textContent === 'Read' ? 'Not read' : 'Read';
 }
 
+function changeColor(event) {
+  const button = event.target;;
+  const bookIndex = parseInt(button.getAttribute('data-index'));
+  const book = myLibrary[bookIndex];
+
+  button.classList.toggle('not-read-color');
+  button.classList.toggle('read-color');
+}
+
 function displayBook() {
   const library = document.querySelector('#library');
   library.innerHTML = ''; // Clear existing content before re-rendering
@@ -66,14 +75,18 @@ function displayBook() {
     const buttonRead = document.createElement('button');
 
     div.classList.toggle('grid-item');
-    buttonRead.classList.toggle('button-action');
+    buttonRead.classList.add('button-action', 'not-read-color');
     buttonDelete.classList.toggle('button-action');
+
     buttonDelete.textContent = 'Remove';
     buttonRead.textContent = 'Not read';
+
     buttonDelete.setAttribute('data-index', index);
     buttonRead.setAttribute('data-index', index);
+
     buttonDelete.addEventListener('click', removeBook);
     buttonRead.addEventListener('click', changeStatus);
+    buttonRead.addEventListener('click', changeColor);
 
     for (const [key, value] of Object.entries(book)) {
       if (key !== 'read') {

@@ -122,3 +122,11 @@ legend {
 .button-action {
   font-size: 1.2rem;
 }
+
+.not-read-color {
+  background-color: red;
+}
+
+.read-color {
+  background-color: green;
+}
