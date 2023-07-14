@@ -71,18 +71,26 @@ function displayBook() {
 
   myLibrary.forEach((book, index) => {
     const div = document.createElement('div');
-    const buttonDelete = document.createElement('button');
     const buttonRead = document.createElement('button');
+    const buttonDelete = document.createElement('button');
+
+    buttonRead.setAttribute('data-index', index);
+    buttonDelete.setAttribute('data-index', index);
 
     div.classList.toggle('grid-item');
-    buttonRead.classList.add('button-action', 'not-read-color');
+
+    if (book.read) {
+      buttonRead.textContent = 'Read';
+      buttonRead.classList.add('read-color');
+    } else {
+      buttonRead.textContent = 'Not read'
+      buttonRead.classList.add('not-read-color');
+    }
+
+    buttonRead.classList.add('button-action');
     buttonDelete.classList.toggle('button-action');
 
     buttonDelete.textContent = 'Remove';
-    buttonRead.textContent = 'Not read';
-
-    buttonDelete.setAttribute('data-index', index);
-    buttonRead.setAttribute('data-index', index);
 
     buttonDelete.addEventListener('click', removeBook);
     buttonRead.addEventListener('click', changeStatus);
