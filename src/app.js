@@ -65,6 +65,16 @@ function changeColor(event) {
   button.classList.toggle('read-color');
 }
 
+function checkRead(book, buttonRead) {
+  if (book.read) {
+    buttonRead.textContent = 'Read';
+    buttonRead.classList.add('read-color');
+  } else {
+    buttonRead.textContent = 'Not read'
+    buttonRead.classList.add('not-read-color');
+  }
+}
+
 function displayBook() {
   const library = document.querySelector('#library');
   library.innerHTML = ''; // Clear existing content before re-rendering
@@ -79,13 +89,7 @@ function displayBook() {
 
     div.classList.toggle('grid-item');
 
-    if (book.read) {
-      buttonRead.textContent = 'Read';
-      buttonRead.classList.add('read-color');
-    } else {
-      buttonRead.textContent = 'Not read'
-      buttonRead.classList.add('not-read-color');
-    }
+    checkRead(book, buttonRead);
 
     buttonRead.classList.add('button-action');
     buttonDelete.classList.toggle('button-action');
