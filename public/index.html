@@ -25,18 +25,23 @@
             <legend>Add new book</legend>
 
             <label for="title" class="visually-hidden">Title</label>
-            <input type="text" name="title" placeholder="Title" name="title" id="title" required>
+            <input type="text" id="title" placeholder="Title" name="title" id="title" required>
 
             <label for="author" class="visually-hidden">Author</label>
-            <input type="text" name="author" placeholder="Author" name="author" id="author" required>
+            <input type="text" id="author" placeholder="Author" name="author" id="author" required>
 
             <label for="pages" class="visually-hidden">Pages</label>
-            <input type="number" name="pages" placeholder="Pages" name="pages" id="pages" required>
+            <input type="number" id="pages" placeholder="Pages" name="pages" id="pages" required>
+
+            <div class="checkbox">
+                <label for="read">Have you read it?</label>
+                <input type="checkbox" id="read" name="read">
+            </div>
 
             <input type="submit">
         </fieldset>
     </form>
-      
+
     <div id="library" class="grid-container"></div>
 
     <script src="../src/app.js"></script>

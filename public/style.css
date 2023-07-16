@@ -28,7 +28,7 @@ form {
   height: 20rem;
 }
 
-input {
+input:not([type="checkbox"]) {
   width: 100%;
   height: 2.5rem;
   border-radius: 4px;
@@ -39,6 +39,11 @@ input {
 input:focus {
   outline: none;
 
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
 }
 
 input[type="submit"] {
@@ -75,6 +80,13 @@ legend {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
 }
 
 .hidden {
