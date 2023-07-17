@@ -1,9 +1,0 @@
-{
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "eslint.validate": [
-        "javascript"
-    ],
-    "javascript.preferences.quoteStyle": "auto"
-}
