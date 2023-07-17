@@ -14,6 +14,8 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(event) {
   event.preventDefault();
 
+  console.log(event);
+
   const title = document.querySelector('input[name="title"]').value;
   const author = document.querySelector('input[name="author"]').value;
   const pages = document.querySelector('input[name="pages"]').value;
@@ -65,7 +67,7 @@ function changeColor(event) {
   button.classList.toggle('read-color');
 }
 
-function checkRead(book, buttonRead) {
+function checkReadButton(book, buttonRead) {
   if (book.read) {
     buttonRead.textContent = 'Read';
     buttonRead.classList.add('read-color');
@@ -73,6 +75,10 @@ function checkRead(book, buttonRead) {
     buttonRead.textContent = 'Not read'
     buttonRead.classList.add('not-read-color');
   }
+}
+
+function checkReadCheckbox() {
+
 }
 
 function displayBook() {
@@ -89,7 +95,7 @@ function displayBook() {
 
     div.classList.toggle('grid-item');
 
-    checkRead(book, buttonRead);
+    checkReadButton(book, buttonRead);
 
     buttonRead.classList.add('button-action');
     buttonDelete.classList.toggle('button-action');
