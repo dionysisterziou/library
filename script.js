@@ -34,7 +34,11 @@ class Book {
   }
 
   set pages(pages) {
-    this._pages = pages;
+    if (!isNaN(pages) && pages >= 1) {
+      this._pages = pages;
+    } else {
+      alert("Pages must be equal or greater than 1!");
+    }
   }
 
   // Getter and setter for read
@@ -52,14 +56,12 @@ const myLibrary = [];
 function addBookToLibrary(event) {
   event.preventDefault();
 
-  console.log(event);
+  const book = new Book();
 
-  const title = document.querySelector('input[name="title"]').value;
-  const author = document.querySelector('input[name="author"]').value;
-  const pages = document.querySelector('input[name="pages"]').value;
-  const read = false;
-
-  const book = new Book(title, author, pages, read);
+  book.title = document.querySelector('input[name="title"]').value;
+  book.author = document.querySelector('input[name="author"]').value;
+  book.pages = parseInt(document.querySelector('input[name="pages"]').value, 10);
+  book.read = false;
 
   myLibrary.push(book);
   displayBook();
@@ -97,8 +99,6 @@ function changeStatus(event) {
 
 function changeColor(event) {
   const button = event.target;;
-  const bookIndex = parseInt(button.getAttribute('data-index'));
-  const book = myLibrary[bookIndex];
 
   button.classList.toggle('not-read-color');
   button.classList.toggle('read-color');
