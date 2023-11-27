@@ -63,7 +63,10 @@ function addBookToLibrary(event) {
   book.pages = parseInt(document.querySelector('input[name="pages"]').value, 10);
   book.read = false;
 
-  myLibrary.push(book);
+  if (typeof book.pages !== 'undefined') {
+    myLibrary.push(book);
+  }
+
   displayBook();
   hideForm();
   bookForm.reset(); // Reset the form fields
