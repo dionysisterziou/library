@@ -2,16 +2,52 @@ const buttonAdd = document.querySelector('#buttonAdd');
 const bookForm = document.querySelector('#bookForm');
 const darkOverlay = document.querySelector('#darkOverlay');
 
-const myLibrary = [];
-
 class Book {
   constructor(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+    this._title = title;
+    this._author = author;
+    this._pages = pages;
+    this._read = read;
+  }
+
+  // Getter and setter for title
+  get title() {
+    return this._title;
+  }
+
+  set title(title) {
+    this._title = title;
+  }
+
+  // Getter and setter for author
+  get author() {
+    return this._author;
+  }
+
+  set author(author) {
+    this._author = author;
+  }
+
+  // Getter and setter for pages
+  get pages() {
+    return this._pages;
+  }
+
+  set pages(pages) {
+    this._pages = pages;
+  }
+
+  // Getter and setter for read
+  get read() {
+    return this._read;
+  }
+
+  set read(read) {
+    this._read = read;
   }
 }
+
+const myLibrary = [];
 
 function addBookToLibrary(event) {
   event.preventDefault();
@@ -27,9 +63,8 @@ function addBookToLibrary(event) {
 
   myLibrary.push(book);
   displayBook();
-
-  bookForm.reset(); // Reset the form fields
   hideForm();
+  bookForm.reset(); // Reset the form fields
 }
 
 function showForm() {
@@ -109,12 +144,12 @@ function displayBook() {
     buttonRead.addEventListener('click', changeColor);
 
     for (const [key, value] of Object.entries(book)) {
-      if (key !== 'read') {
+      if (key !== '_read') {
         const p = document.createElement('p');
 
-        if (key === 'title') {
+        if (key === '_title') {
           p.textContent = `"${value}"`;
-        } else if (key === 'pages') {
+        } else if (key === '_pages') {
           p.textContent = `${value} pages`;
         } else {
           p.textContent = `${value}`;
