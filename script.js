@@ -11,7 +11,13 @@ class Book {
   }
 }
 
-const myLibrary = [];
+class Library {
+  constructor() {
+    this.books = [];
+  }
+}
+
+const myLibrary = new Library();
 
 function addBookToLibrary(event) {
   event.preventDefault();
