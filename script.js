@@ -4,50 +4,10 @@ const darkOverlay = document.querySelector('#darkOverlay');
 
 class Book {
   constructor(title, author, pages, read) {
-    this._title = title;
-    this._author = author;
-    this._pages = pages;
-    this._read = read;
-  }
-
-  // Getter and setter for title
-  get title() {
-    return this._title;
-  }
-
-  set title(title) {
-    this._title = title;
-  }
-
-  // Getter and setter for author
-  get author() {
-    return this._author;
-  }
-
-  set author(author) {
-    this._author = author;
-  }
-
-  // Getter and setter for pages
-  get pages() {
-    return this._pages;
-  }
-
-  set pages(pages) {
-    if (!isNaN(pages) && pages >= 1) {
-      this._pages = pages;
-    } else {
-      alert("Pages must be equal or greater than 1!");
-    }
-  }
-
-  // Getter and setter for read
-  get read() {
-    return this._read;
-  }
-
-  set read(read) {
-    this._read = read;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
 }
 
@@ -56,16 +16,14 @@ const myLibrary = [];
 function addBookToLibrary(event) {
   event.preventDefault();
 
-  const book = new Book();
+  const title = document.querySelector('input[name="title"]').value;
+  const author = document.querySelector('input[name="author"]').value;
+  const pages = parseInt(document.querySelector('input[name="pages"]').value, 10);
+  const read = false;
 
-  book.title = document.querySelector('input[name="title"]').value;
-  book.author = document.querySelector('input[name="author"]').value;
-  book.pages = parseInt(document.querySelector('input[name="pages"]').value, 10);
-  book.read = false;
+  const book = new Book(title, author, pages, read);
 
-  if (typeof book.pages !== 'undefined') {
-    myLibrary.push(book);
-  }
+  myLibrary.push(book);
 
   displayBook();
   hideForm();
@@ -117,10 +75,6 @@ function checkReadButton(book, buttonRead) {
   }
 }
 
-function checkReadCheckbox() {
-
-}
-
 function displayBook() {
   const library = document.querySelector('#library');
   library.innerHTML = ''; // Clear existing content before re-rendering
@@ -147,12 +101,12 @@ function displayBook() {
     buttonRead.addEventListener('click', changeColor);
 
     for (const [key, value] of Object.entries(book)) {
-      if (key !== '_read') {
+      if (key !== 'read') {
         const p = document.createElement('p');
 
-        if (key === '_title') {
+        if (key === 'title') {
           p.textContent = `"${value}"`;
-        } else if (key === '_pages') {
+        } else if (key === 'pages') {
           p.textContent = `${value} pages`;
         } else {
           p.textContent = `${value}`;
