@@ -15,6 +15,18 @@ class Library {
   constructor() {
     this.books = [];
   }
+
+  addBook(book) {
+    this.books.push(book);
+  }
+
+  removeBook(index) {
+    this.books.splice(index, 1);
+  }
+
+  toggleReadStatus(index) {
+    this.books[index].read = !this.books[index].read;
+  }
 }
 
 const myLibrary = new Library();
@@ -29,7 +41,7 @@ function addBookToLibrary(event) {
 
   const book = new Book(title, author, pages, read);
 
-  myLibrary.push(book);
+  myLibrary.addBook(book);
 
   displayBook();
   hideForm();
@@ -50,18 +62,16 @@ function removeBook(event) {
   const button = event.target;
   const bookIndex = parseInt(button.getAttribute('data-index'));
 
-  myLibrary.splice(bookIndex, 1);
+  myLibrary.removeBook(bookIndex, 1);
   displayBook();
 }
 
 function changeStatus(event) {
   const button = event.target;
   const bookIndex = parseInt(button.getAttribute('data-index'));
-  const book = myLibrary[bookIndex];
 
-  book.read = !book.read; // Toggle read property
-
-  button.textContent = button.textContent === 'Read' ? 'Not read' : 'Read';
+  myLibrary.toggleReadStatus(bookIndex);
+  displayBook();
 }
 
 function changeColor(event) {
@@ -85,7 +95,7 @@ function displayBook() {
   const library = document.querySelector('#library');
   library.innerHTML = ''; // Clear existing content before re-rendering
 
-  myLibrary.forEach((book, index) => {
+  myLibrary.books.forEach((book, index) => {
     const div = document.createElement('div');
     const buttonRead = document.createElement('button');
     const buttonDelete = document.createElement('button');
