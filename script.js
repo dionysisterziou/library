@@ -141,6 +141,6 @@ const bookForm = document.querySelector('#bookForm');
 const darkOverlay = document.querySelector('#darkOverlay');
 const myLibrary = new Library();
 
-buttonAdd.addEventListener('click', showForm);
-darkOverlay.addEventListener('click', hideForm)
-bookForm.addEventListener('submit', addBookToLibrary);
+buttonAdd.addEventListener('click', Form.showForm);
+darkOverlay.addEventListener('click', Form.hideForm)
+bookForm.addEventListener('submit', Form.addBookToLibrary);
