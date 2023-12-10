@@ -120,7 +120,7 @@ class Form {
 
     myLibrary.addBook(book);
     UI.displayBook();
-    hideForm();
+    Form.hideForm();
     bookForm.reset(); // Reset the form fields
   }
 
