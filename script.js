@@ -40,16 +40,16 @@ class UI {
 
       div.classList.toggle('grid-item');
 
-      checkReadButton(book, buttonRead);
+      UI.checkReadButton(book, buttonRead);
 
       buttonRead.classList.add('button-action');
       buttonDelete.classList.toggle('button-action');
 
       buttonDelete.textContent = 'Remove';
 
-      buttonDelete.addEventListener('click', removeBook);
-      buttonRead.addEventListener('click', changeStatus);
-      buttonRead.addEventListener('click', changeColor);
+      buttonDelete.addEventListener('click', Form.removeBook);
+      buttonRead.addEventListener('click', UI.changeStatus);
+      buttonRead.addEventListener('click', UI.changeColor);
 
       for (const [key, value] of Object.entries(book)) {
         if (key !== 'read') {
@@ -119,7 +119,7 @@ class Form {
     const book = new Book(title, author, pages, read);
 
     myLibrary.addBook(book);
-    displayBook();
+    UI.displayBook();
     hideForm();
     bookForm.reset(); // Reset the form fields
   }
