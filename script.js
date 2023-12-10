@@ -12,11 +12,11 @@ class Library {
     this.books = [];
   }
 
-  addBook(book) {
+  add(book) {
     this.books.push(book);
   }
 
-  removeBook(index) {
+  remove(index) {
     this.books.splice(index, 1);
   }
 
@@ -44,10 +44,8 @@ class UI {
 
       buttonRead.classList.add('button-action');
       buttonDelete.classList.toggle('button-action');
-
       buttonDelete.textContent = 'Remove';
-
-      buttonDelete.addEventListener('click', Form.removeBook);
+      buttonDelete.addEventListener('click', UI.removeBook);
       buttonRead.addEventListener('click', UI.changeStatus);
       buttonRead.addEventListener('click', UI.changeColor);
 
@@ -77,7 +75,7 @@ class UI {
     const button = event.target;
     const bookIndex = parseInt(button.getAttribute('data-index'));
 
-    myLibrary.removeBook(bookIndex, 1);
+    myLibrary.remove(bookIndex, 1);
     UI.displayBook();
   }
 
@@ -118,7 +116,7 @@ class Form {
 
     const book = new Book(title, author, pages, read);
 
-    myLibrary.addBook(book);
+    myLibrary.add(book);
     UI.displayBook();
     Form.hideForm();
     bookForm.reset(); // Reset the form fields
