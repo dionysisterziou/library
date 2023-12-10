@@ -78,7 +78,7 @@ class UI {
     const bookIndex = parseInt(button.getAttribute('data-index'));
 
     myLibrary.removeBook(bookIndex, 1);
-    displayBook();
+    UI.displayBook();
   }
 
   static changeStatus(event) {
@@ -86,7 +86,7 @@ class UI {
     const bookIndex = parseInt(button.getAttribute('data-index'));
 
     myLibrary.toggleReadStatus(bookIndex);
-    displayBook();
+    UI.displayBook();
   }
 
   static changeColor(event) {
