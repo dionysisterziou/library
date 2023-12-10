@@ -1,7 +1,3 @@
-const buttonAdd = document.querySelector('#buttonAdd');
-const bookForm = document.querySelector('#bookForm');
-const darkOverlay = document.querySelector('#darkOverlay');
-
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
@@ -29,114 +25,121 @@ class Library {
   }
 }
 
-const myLibrary = new Library();
+class UI {
+  static displayBook() {
+    const library = document.querySelector('#library');
+    library.innerHTML = ''; // Clear existing content before re-rendering
 
-function addBookToLibrary(event) {
-  event.preventDefault();
+    myLibrary.books.forEach((book, index) => {
+      const div = document.createElement('div');
+      const buttonRead = document.createElement('button');
+      const buttonDelete = document.createElement('button');
 
-  const title = document.querySelector('input[name="title"]').value;
-  const author = document.querySelector('input[name="author"]').value;
-  const pages = parseInt(document.querySelector('input[name="pages"]').value, 10);
-  const read = false;
+      buttonRead.setAttribute('data-index', index);
+      buttonDelete.setAttribute('data-index', index);
 
-  const book = new Book(title, author, pages, read);
+      div.classList.toggle('grid-item');
 
-  myLibrary.addBook(book);
+      checkReadButton(book, buttonRead);
 
-  displayBook();
-  hideForm();
-  bookForm.reset(); // Reset the form fields
-}
+      buttonRead.classList.add('button-action');
+      buttonDelete.classList.toggle('button-action');
 
-function showForm() {
-  bookForm.classList.remove('hidden');
-  darkOverlay.classList.remove('hidden');
-}
+      buttonDelete.textContent = 'Remove';
 
-function hideForm() {
-  bookForm.classList.add('hidden');
-  darkOverlay.classList.add('hidden');
-}
+      buttonDelete.addEventListener('click', removeBook);
+      buttonRead.addEventListener('click', changeStatus);
+      buttonRead.addEventListener('click', changeColor);
 
-function removeBook(event) {
-  const button = event.target;
-  const bookIndex = parseInt(button.getAttribute('data-index'));
+      for (const [key, value] of Object.entries(book)) {
+        if (key !== 'read') {
+          const p = document.createElement('p');
 
-  myLibrary.removeBook(bookIndex, 1);
-  displayBook();
-}
+          if (key === 'title') {
+            p.textContent = `"${value}"`;
+          } else if (key === 'pages') {
+            p.textContent = `${value} pages`;
+          } else {
+            p.textContent = `${value}`;
+          }
 
-function changeStatus(event) {
-  const button = event.target;
-  const bookIndex = parseInt(button.getAttribute('data-index'));
+          div.appendChild(p);
+        }
+      }
 
-  myLibrary.toggleReadStatus(bookIndex);
-  displayBook();
-}
+      div.appendChild(buttonRead);
+      div.appendChild(buttonDelete);
+      library.appendChild(div);
+    });
+  }
 
-function changeColor(event) {
-  const button = event.target;;
+  static removeBook(event) {
+    const button = event.target;
+    const bookIndex = parseInt(button.getAttribute('data-index'));
 
-  button.classList.toggle('not-read-color');
-  button.classList.toggle('read-color');
-}
+    myLibrary.removeBook(bookIndex, 1);
+    displayBook();
+  }
 
-function checkReadButton(book, buttonRead) {
-  if (book.read) {
-    buttonRead.textContent = 'Read';
-    buttonRead.classList.add('read-color');
-  } else {
-    buttonRead.textContent = 'Not read'
-    buttonRead.classList.add('not-read-color');
+  static changeStatus(event) {
+    const button = event.target;
+    const bookIndex = parseInt(button.getAttribute('data-index'));
+
+    myLibrary.toggleReadStatus(bookIndex);
+    displayBook();
+  }
+
+  static changeColor(event) {
+    const button = event.target;;
+
+    button.classList.toggle('not-read-color');
+    button.classList.toggle('read-color');
+  }
+
+  static checkReadButton(book, buttonRead) {
+    if (book.read) {
+      buttonRead.textContent = 'Read';
+      buttonRead.classList.add('read-color');
+    } else {
+      buttonRead.textContent = 'Not read'
+      buttonRead.classList.add('not-read-color');
+    }
   }
 }
 
-function displayBook() {
-  const library = document.querySelector('#library');
-  library.innerHTML = ''; // Clear existing content before re-rendering
+class Form {
+  static addBookToLibrary(event) {
+    event.preventDefault();
 
-  myLibrary.books.forEach((book, index) => {
-    const div = document.createElement('div');
-    const buttonRead = document.createElement('button');
-    const buttonDelete = document.createElement('button');
+    const title = document.querySelector('input[name="title"]').value;
+    const author = document.querySelector('input[name="author"]').value;
+    const pages = parseInt(document.querySelector('input[name="pages"]').value, 10);
+    const read = false;
 
-    buttonRead.setAttribute('data-index', index);
-    buttonDelete.setAttribute('data-index', index);
+    const book = new Book(title, author, pages, read);
 
-    div.classList.toggle('grid-item');
+    myLibrary.addBook(book);
+    displayBook();
+    hideForm();
+    bookForm.reset(); // Reset the form fields
+  }
 
-    checkReadButton(book, buttonRead);
+  static showForm() {
+    bookForm.classList.remove('hidden');
+    darkOverlay.classList.remove('hidden');
+  }
 
-    buttonRead.classList.add('button-action');
-    buttonDelete.classList.toggle('button-action');
 
-    buttonDelete.textContent = 'Remove';
-
-    buttonDelete.addEventListener('click', removeBook);
-    buttonRead.addEventListener('click', changeStatus);
-    buttonRead.addEventListener('click', changeColor);
-
-    for (const [key, value] of Object.entries(book)) {
-      if (key !== 'read') {
-        const p = document.createElement('p');
-
-        if (key === 'title') {
-          p.textContent = `"${value}"`;
-        } else if (key === 'pages') {
-          p.textContent = `${value} pages`;
-        } else {
-          p.textContent = `${value}`;
-        }
-
-        div.appendChild(p);
-      }
-    }
-
-    div.appendChild(buttonRead);
-    div.appendChild(buttonDelete);
-    library.appendChild(div);
-  });
+  static hideForm() {
+    bookForm.classList.add('hidden');
+    darkOverlay.classList.add('hidden');
+  }
 }
+
+const buttonAdd = document.querySelector('#buttonAdd');
+const bookForm = document.querySelector('#bookForm');
+const darkOverlay = document.querySelector('#darkOverlay');
+const myLibrary = new Library();
 
 buttonAdd.addEventListener('click', showForm);
 darkOverlay.addEventListener('click', hideForm)
