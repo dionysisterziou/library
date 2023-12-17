@@ -26,19 +26,25 @@ class Library {
 }
 
 class UI {
-  static displayBook() {
+  static createBookElement(book, index) {
+    const div = document.createElement('div');
+
+    return div;
+  }
+
+  static displayBooks() {
     const library = document.querySelector('#library');
     library.innerHTML = ''; // Clear existing content before re-rendering
 
     myLibrary.books.forEach((book, index) => {
-      const div = document.createElement('div');
+      const bookElement = UI.createBookElement(book, index);
       const buttonRead = document.createElement('button');
       const buttonDelete = document.createElement('button');
 
       buttonRead.setAttribute('data-index', index);
       buttonDelete.setAttribute('data-index', index);
 
-      div.classList.toggle('grid-item');
+      bookElement.classList.toggle('grid-item');
 
       UI.checkReadButton(book, buttonRead);
 
@@ -61,13 +67,13 @@ class UI {
             p.textContent = `${value}`;
           }
 
-          div.appendChild(p);
+          bookElement.appendChild(p);
         }
       }
 
-      div.appendChild(buttonRead);
-      div.appendChild(buttonDelete);
-      library.appendChild(div);
+      bookElement.appendChild(buttonRead);
+      bookElement.appendChild(buttonDelete);
+      library.appendChild(bookElement);
     });
   }
 
@@ -76,7 +82,7 @@ class UI {
     const bookIndex = parseInt(button.getAttribute('data-index'));
 
     myLibrary.remove(bookIndex, 1);
-    UI.displayBook();
+    UI.displayBooks();
   }
 
   static changeStatus(event) {
@@ -84,7 +90,7 @@ class UI {
     const bookIndex = parseInt(button.getAttribute('data-index'));
 
     myLibrary.toggleReadStatus(bookIndex);
-    UI.displayBook();
+    UI.displayBooks();
   }
 
   static changeColor(event) {
@@ -117,7 +123,7 @@ class Form {
     const book = new Book(title, author, pages, read);
 
     myLibrary.add(book);
-    UI.displayBook();
+    UI.displayBooks();
     Form.hideForm();
     bookForm.reset(); // Reset the form fields
   }
