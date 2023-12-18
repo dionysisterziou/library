@@ -32,23 +32,7 @@ class UI {
 
     myLibrary.books.forEach((book, index) => {
       const bookElement = UI.createBookElement(book, index);
-      const buttonRead = document.createElement('button');
-      const buttonDelete = document.createElement('button');
 
-      buttonRead.setAttribute('data-index', index);
-      buttonDelete.setAttribute('data-index', index);
-
-      UI.checkReadButton(book, buttonRead);
-
-      buttonRead.classList.add('button-action');
-      buttonDelete.classList.toggle('button-action');
-      buttonDelete.textContent = 'Remove';
-      buttonDelete.addEventListener('click', UI.removeBook);
-      buttonRead.addEventListener('click', UI.changeStatus);
-      buttonRead.addEventListener('click', UI.changeColor);
-
-      bookElement.appendChild(buttonRead);
-      bookElement.appendChild(buttonDelete);
       library.appendChild(bookElement);
     });
   }
@@ -58,6 +42,7 @@ class UI {
 
     div.classList.toggle('grid-item');
     UI.addBookDetails(book, div);
+    UI.addBookButtons(book, div, index);
 
     return div;
   }
@@ -78,6 +63,24 @@ class UI {
         div.appendChild(p);
       }
     }
+  }
+
+  static addBookButtons(book, div, index) {
+    const buttonRead = document.createElement('button');
+    const buttonDelete = document.createElement('button');
+
+    buttonRead.setAttribute('data-index', index);
+    buttonDelete.setAttribute('data-index', index);
+    UI.checkReadButton(book, buttonRead);
+    buttonRead.classList.add('button-action');
+    buttonDelete.classList.toggle('button-action');
+    buttonDelete.textContent = 'Remove';
+    buttonDelete.addEventListener('click', UI.removeBook);
+    buttonRead.addEventListener('click', UI.changeStatus);
+    buttonRead.addEventListener('click', UI.changeColor);
+
+    div.appendChild(buttonRead);
+    div.appendChild(buttonDelete);
   }
 
   static removeBook(event) {
