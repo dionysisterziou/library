@@ -26,12 +26,6 @@ class Library {
 }
 
 class UI {
-  static createBookElement(book, index) {
-    const div = document.createElement('div');
-
-    return div;
-  }
-
   static displayBooks() {
     const library = document.querySelector('#library');
     library.innerHTML = ''; // Clear existing content before re-rendering
@@ -44,8 +38,6 @@ class UI {
       buttonRead.setAttribute('data-index', index);
       buttonDelete.setAttribute('data-index', index);
 
-      bookElement.classList.toggle('grid-item');
-
       UI.checkReadButton(book, buttonRead);
 
       buttonRead.classList.add('button-action');
@@ -55,26 +47,37 @@ class UI {
       buttonRead.addEventListener('click', UI.changeStatus);
       buttonRead.addEventListener('click', UI.changeColor);
 
-      for (const [key, value] of Object.entries(book)) {
-        if (key !== 'read') {
-          const p = document.createElement('p');
-
-          if (key === 'title') {
-            p.textContent = `"${value}"`;
-          } else if (key === 'pages') {
-            p.textContent = `${value} pages`;
-          } else {
-            p.textContent = `${value}`;
-          }
-
-          bookElement.appendChild(p);
-        }
-      }
-
       bookElement.appendChild(buttonRead);
       bookElement.appendChild(buttonDelete);
       library.appendChild(bookElement);
     });
+  }
+
+  static createBookElement(book, index) {
+    const div = document.createElement('div');
+
+    div.classList.toggle('grid-item');
+    UI.addBookDetails(book, div);
+
+    return div;
+  }
+
+  static addBookDetails(book, div) {
+    for (const [key, value] of Object.entries(book)) {
+      if (key !== 'read') {
+        const p = document.createElement('p');
+
+        if (key === 'title') {
+          p.textContent = `"${value}"`;
+        } else if (key === 'pages') {
+          p.textContent = `${value} pages`;
+        } else {
+          p.textContent = `${value}`;
+        }
+
+        div.appendChild(p);
+      }
+    }
   }
 
   static removeBook(event) {
