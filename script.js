@@ -66,26 +66,22 @@ class UI {
   }
 
   static addBookButtons(book, div, index) {
-    const buttonRead = UI.createButton('Read');
-    const buttonDelete = UI.createButton('Delete');
+    const buttonRead = UI.createButton('Read', index, UI.changeStatus, UI.changeColor);
+    const buttonDelete = UI.createButton('Delete', index, UI.removeBook);
 
-    buttonRead.setAttribute('data-index', index);
-    buttonDelete.setAttribute('data-index', index);
     UI.checkReadButton(book, buttonRead);
-    buttonRead.classList.add('button-action');
-    buttonDelete.classList.toggle('button-action');
-    buttonDelete.addEventListener('click', UI.removeBook);
-    buttonRead.addEventListener('click', UI.changeStatus);
-    buttonRead.addEventListener('click', UI.changeColor);
 
     div.appendChild(buttonRead);
     div.appendChild(buttonDelete);
   }
 
-  static createButton(text) {
+  static createButton(text, index, ...eventHandlers) {
     const button = document.createElement('button');
 
+    button.setAttribute('data-index', index);
     button.textContent = text;
+    button.classList.toggle('button-action');
+    eventHandlers.forEach(handler => button.addEventListener('click', handler));
 
     return button;
   }
